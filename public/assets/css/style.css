@@ -1,3 +1,11 @@
+/*fonts
+font-family: 'Caveat Brush', cursive;
+font-family: 'Raleway', sans-serif;*/
+
+.nav-item {
+    font-family: 'Caveat Brush', cursive;
+}
+
 .form-home {
     height: 100vh;
     display: flex;
@@ -30,10 +38,16 @@
 /*affichage quetes*/
 h5 {
     text-align: center;
+    font-family: 'Caveat Brush', cursive;
 }
 
 .accordion {
     margin: 20px;
+}
+
+
+.card-body {
+    font-family: 'Raleway', sans-serif;
 }
 
 /*formulaire recherche*/
