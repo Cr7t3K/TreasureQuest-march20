@@ -22,19 +22,25 @@ class QuestController extends AbstractController
         $this->connected($_SESSION);
         $questManager = new QuestManager();
         $quests = $questManager->selectAll();
+      
+        if (!empty($_SESSION['score']) || ($_SESSION['score'] == 0)) {
+            $score = "SCORE : " . $_SESSION['score'];
+        } else {
+            $score = '';
+        }
 
         if (!empty($_POST['search'])) {
             $search = trim($_POST['search']);
             $coord = $this->getPosition($search);
             if ($coord) {
                 $webcams = $this->search($coord);
-                return $this->twig->render('Quest/index.html.twig', ['quests' => $quests, 'webcams' => $webcams]);
+                return $this->twig->render('Quest/index.html.twig', ['quests' => $quests, 'webcams' => $webcams, 'userScore' => $score]);
             } else {
                 $error = "Sa existe pas abruti";
-                return $this->twig->render('Quest/index.html.twig', ['quests' => $quests, 'error' => $error]);
+                return $this->twig->render('Quest/index.html.twig', ['quests' => $quests, 'error' => $error, 'userScore' => $score]);
             }
         }
-        return $this->twig->render('Quest/index.html.twig', ['quests' => $quests]);
+        return $this->twig->render('Quest/index.html.twig', ['quests' => $quests, 'userScore' => $score]);
     }
 
     public function search(array $coordinate)
