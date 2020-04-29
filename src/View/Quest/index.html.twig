@@ -1,28 +1,12 @@
 {% extends 'layout.html.twig' %}
 
 {% block user_score %}
-    {{ userScore }}
+    Score : {{ userScore }}
 {% endblock %}
 
 {% block content %}
-    <form class="form-search" method="POST">
-        <div class="form-group search">
-            <input type="text" class="form-control" id="search" name="search" placeholder="Rechercher ..">
-        </div>
-        <button type="submit" class="btn btn-search"><i class="fas fa-play" style="color: forestgreen;"></i></button>
-    </form>
-    {% if error is defined %}
-        <div class="alert alert-danger" role="alert">
-            {{ error }}
-        </div>
-    {% endif %}
-
-    {% for webcam in webcams %}
-        <iframe src="{{ webcam.player.lifetime.embed }}" frameborder="0"></iframe>
-    {% endfor %}
-
-    {% for quest in quests %}
-        <h5>{{ quest.quest_title }}</h5>
+    <div class="container-quest">
+        <h5>{{ quests.0.quest_title }}</h5>
         <div class="accordion" id="accordionExample">
             <div class="card">
                 <div class="card-header" id="headingOne">
@@ -37,7 +21,7 @@
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                      data-parent="#accordionExample">
                     <div class="card-body">
-                        {{ quest.quest_clue01 }}
+                        {{ quests.0.quest_clue01 }}
                     </div>
                 </div>
             </div>
@@ -52,7 +36,7 @@
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                     <div class="card-body">
-                        {{ quest.quest_clue02 }}
+                        {{ quests.0.quest_clue02 }}
                     </div>
                 </div>
             </div>
@@ -67,10 +51,41 @@
                 </div>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                     <div class="card-body">
-                        {{ quest.quest_clue03 }}
+                        {{ quests.0.quest_clue03 }}
                     </div>
                 </div>
             </div>
         </div>
-    {% endfor %}
+    </div>
+    <form class="form-search-quest" method="POST">
+        <div class="form-group search">
+            <input type="text" class="form-control" id="search" name="search" placeholder="Recherche une ville">
+        </div>
+        <button type="submit" class="btn btn-search"><i class="fas fa-play" style="color: forestgreen;"></i></button>
+    </form>
+    {% if check is defined %}
+        {% if check == true %}
+            <span>Tu a la bonne reponse Bravo !!!</span>
+        {% else %}
+            <span>Tu a pas la bonne reponse recommence</span>
+        {% endif %}
+    {% endif %}
+
+    {% if error is defined %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+    {% endif %}
+
+    <form class="container-webcam" method="POST">
+        {% for webcam in webcams %}
+            <div class="webcam">
+                <iframe src="{{ webcam.player.lifetime.embed }}" frameborder="0"></iframe>
+                <input name="id" value="{{ quests.0.quest_id }}" type="hidden">
+                <button type="submit" name="response" value="{{ webcam.id }}">Check</button>
+            </div>
+        {% endfor %}
+    </form>
+
+
 {% endblock %}

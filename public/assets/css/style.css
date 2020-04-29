@@ -61,3 +61,17 @@ h5 {
 .table-container {
     padding-top: 150px;
 }
+
+.container-quest {
+    padding-top: 150px;
+}
+.form-search-quest {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.container-webcam{
+    display: flex;
+    flex-wrap: wrap;
+}

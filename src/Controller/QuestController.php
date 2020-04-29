@@ -14,19 +14,27 @@ class QuestController extends AbstractController
     {
         if (empty($session['username'])) {
             header("Location: /");
+        } else {
+            return $session['score'];
         }
     }
 
     public function start()
     {
-        $this->connected($_SESSION);
+        $return = $this->connected($_SESSION);
         $questManager = new QuestManager();
         $quests = $questManager->selectAll();
-      
-        if (!empty($_SESSION['score']) || ($_SESSION['score'] == 0)) {
-            $score = "SCORE : " . $_SESSION['score'];
-        } else {
-            $score = '';
+
+        if (!empty($_POST['response'])) {
+            $response = trim($_POST['response']);
+            $id = $_POST['id'];
+            $check = $this->checkResponse($response, $id);
+            $newScore = $return;
+            if ($check) {
+                $newScore = $_SESSION['score'] += 100;
+            }
+            return $this->twig->render('Quest/index.html.twig', ['quests' => $quests,
+                'userScore' => $newScore, 'check' => $check]);
         }
 
         if (!empty($_POST['search'])) {
@@ -34,13 +42,15 @@ class QuestController extends AbstractController
             $coord = $this->getPosition($search);
             if ($coord) {
                 $webcams = $this->search($coord);
-                return $this->twig->render('Quest/index.html.twig', ['quests' => $quests, 'webcams' => $webcams, 'userScore' => $score]);
+                return $this->twig->render('Quest/index.html.twig', ['quests' => $quests,
+                    'webcams' => $webcams, 'userScore' => $return]);
             } else {
                 $error = "Sa existe pas abruti";
-                return $this->twig->render('Quest/index.html.twig', ['quests' => $quests, 'error' => $error, 'userScore' => $score]);
+                return $this->twig->render('Quest/index.html.twig', ['quests' => $quests,
+                    'error' => $error, 'userScore' => $return]);
             }
         }
-        return $this->twig->render('Quest/index.html.twig', ['quests' => $quests, 'userScore' => $score]);
+        return $this->twig->render('Quest/index.html.twig', ['quests' => $quests, 'userScore' => $return]);
     }
 
     public function search(array $coordinate)
@@ -57,5 +67,15 @@ class QuestController extends AbstractController
         $coordinate = $request->location($location);
 
         return $coordinate;
+    }
+
+    public function checkResponse(string $response, int $id)
+    {
+        $questManager = new QuestManager();
+        $quests = $questManager->selectOneById($id);
+        if ($response == $quests['quest_validation']) {
+            return true;
+        }
+        return false;
     }
 }
