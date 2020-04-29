@@ -3,7 +3,6 @@
 
 namespace App\Controller;
 
-
 class QuestController extends AbstractController
 {
     public function connected($session)
@@ -18,5 +17,4 @@ class QuestController extends AbstractController
         $this->connected($_SESSION);
         return $this->twig->render('Quest/index.html.twig');
     }
-
 }

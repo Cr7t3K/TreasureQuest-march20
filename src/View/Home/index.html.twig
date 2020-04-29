@@ -1,10 +1,10 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <form>
-        <div class="form-group">
-            <input type="text" class="form-control" id="username" name="username" placeholder="Pseudo">
+    <form class="form-home" method="POST">
+        <div class="form-group form-username">
+            <input type="text" class="form-control" id="username" name="username" placeholder="Entre ton pseudo">
         </div>
-        <button type="submit" class="btn btn-primary">Connexion</button>
+        <button type="submit" class="btn btn-home"><i class="fas fa-play" style="color: forestgreen;"></i></button>
     </form>
 {% endblock %}
