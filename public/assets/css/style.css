@@ -1,0 +1,63 @@
+.form-home {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+   position: absolute;
+    width: 100%;
+}
+
+.form-control {
+    background-color: #FF8F56;
+}
+.form-username {
+    margin-bottom: 0;
+}
+.btn-home {
+    font-size: 30px;
+}
+
+::placeholder {
+    color: white !important;
+    font-weight: 600;
+    text-align: center;
+}
+
+/*affichage quetes*/
+h5 {
+    text-align: center;
+}
+
+.accordion {
+    margin: 20px;
+}
+
+/*formulaire recherche*/
+.form-search {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.btn-search{
+    font-size: 30px;
+}
+.search{
+    margin-bottom: 0;
+}
+
+/*tableau des scores*/
+.table {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+.table-container {
+    padding-top: 150px;
+}

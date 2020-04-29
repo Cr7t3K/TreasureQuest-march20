@@ -18,6 +18,19 @@
     </head>
 
     <body>
+        <header class="header">
+            <!-- As a heading -->
+            <nav class="navbar navbar-light bg-faded">
+                <h1 class="navbar-brand mb-0">Treasure Quest</h1>
+                <ul>
+                    {% if userScore is defined %}
+                    <li class="nav-item">
+                        {% block user_score %}{% endblock %}
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
 
         {% block content %}{% endblock %}
         {% block javascript %}{% endblock %}
