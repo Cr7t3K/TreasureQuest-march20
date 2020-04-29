@@ -7,6 +7,11 @@
         </div>
         <button type="submit" class="btn btn-search"><i class="fas fa-play" style="color: forestgreen;"></i></button>
     </form>
+    {% if error is defined %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+    {% endif %}
 
     {% for webcam in webcams %}
         <iframe src="{{ webcam.player.lifetime.embed }}" frameborder="0"></iframe>

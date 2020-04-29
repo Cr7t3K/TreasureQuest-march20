@@ -3,7 +3,7 @@
 
 namespace App\Service\API;
 
-class WendyManager extends AbstractManager
+class WindyManager extends AbstractManager
 {
     protected $client;
 

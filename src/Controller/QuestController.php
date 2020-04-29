@@ -3,12 +3,10 @@
 
 namespace App\Controller;
 
-
 use App\Model\QuestManager;
 use App\Service\API\AbstractManager;
 use App\Service\API\OpencageManager;
-use App\Service\API\WendyManager;
-
+use App\Service\API\WindyManager;
 
 class QuestController extends AbstractController
 {
@@ -32,18 +30,16 @@ class QuestController extends AbstractController
                 $webcams = $this->search($coord);
                 return $this->twig->render('Quest/index.html.twig', ['quests' => $quests, 'webcams' => $webcams]);
             } else {
-                return $this->twig->render('Quest/index.html.twig', ['quests' => $quests]);
+                $error = "Sa existe pas abruti";
+                return $this->twig->render('Quest/index.html.twig', ['quests' => $quests, 'error' => $error]);
             }
-
         }
-
-
         return $this->twig->render('Quest/index.html.twig', ['quests' => $quests]);
     }
 
     public function search(array $coordinate)
     {
-        $request = new WendyManager();
+        $request = new WindyManager();
         $webcams = $request->webcam($coordinate);
 
         return $webcams;
