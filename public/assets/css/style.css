@@ -26,3 +26,27 @@
     font-weight: 600;
     text-align: center;
 }
+
+.card-title {
+    text-align: center;
+}
+
+.card {
+    display: flex;
+    margin:20px;
+}
+
+.card h5 {
+    margin: 5px;
+}
+
+.list-group {
+    justify-content: center;
+    margin: 5px;
+}
+
+.list-group-item {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}

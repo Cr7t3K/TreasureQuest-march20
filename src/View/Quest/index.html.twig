@@ -4,13 +4,11 @@
     {% for quest in quests %}
         <div class="card">
             <h5 class="card-title">{{ quest.quest_title }}</h5>
-            <div class="card" style="width: 18rem;">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">{{ quest.quest_clue01 }}</li>
-                    <li class="list-group-item">{{ quest.quest_clue02 }}</li>
-                    <li class="list-group-item">{{ quest.quest_clue03 }}</li>
-                </ul>
-            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{ quest.quest_clue01 }}</li>
+                <li class="list-group-item">{{ quest.quest_clue02 }}</li>
+                <li class="list-group-item">{{ quest.quest_clue03 }}</li>
+            </ul>
         </div>
     {% endfor %}
 {% endblock %}
