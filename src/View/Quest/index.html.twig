@@ -1,6 +1,14 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+    <form class="form-search" method="POST">
+        <div class="form-group search">
+            <input type="text" class="form-control" id="search" name="search" placeholder="Rechercher ..">
+        </div>
+        <button type="submit" class="btn btn-search"><i class="fas fa-play" style="color: forestgreen;"></i></button>
+    </form>
+    <iframe src=" {{ array }}" frameborder="0"></iframe>
+    
     {% for quest in quests %}
         <h5>{{ quest.quest_title }}</h5>
         <div class="accordion" id="accordionExample">
