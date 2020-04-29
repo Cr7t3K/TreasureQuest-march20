@@ -6,6 +6,8 @@ namespace App\Controller;
 
 use App\Model\QuestManager;
 use App\Service\API\AbstractManager;
+use App\Service\API\OpencageManager;
+use App\Service\API\WendyManager;
 
 
 class QuestController extends AbstractController
@@ -20,18 +22,38 @@ class QuestController extends AbstractController
     public function start()
     {
         $this->connected($_SESSION);
-
         $questManager = new QuestManager();
         $quests = $questManager->selectAll();
+
+        if (!empty($_POST['search'])) {
+            $search = trim($_POST['search']);
+            $coord = $this->getPosition($search);
+            if ($coord) {
+                $webcams = $this->search($coord);
+                return $this->twig->render('Quest/index.html.twig', ['quests' => $quests, 'webcams' => $webcams]);
+            } else {
+                return $this->twig->render('Quest/index.html.twig', ['quests' => $quests]);
+            }
+
+        }
+
 
         return $this->twig->render('Quest/index.html.twig', ['quests' => $quests]);
     }
 
-    public function test()
+    public function search(array $coordinate)
     {
-        $request = new AbstractManager();
-        $array = $request->webcam("list/webcam=1259146823?show=webcams:url,location,player");
+        $request = new WendyManager();
+        $webcams = $request->webcam($coordinate);
 
-        return $this->twig->render('Quest/index.html.twig', ['array' => $array]);
+        return $webcams;
+    }
+
+    public function getPosition(string $location)
+    {
+        $request = new OpencageManager();
+        $coordinate = $request->location($location);
+
+        return $coordinate;
     }
 }

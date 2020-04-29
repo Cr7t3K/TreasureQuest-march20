@@ -5,25 +5,18 @@ namespace App\Service\API;
 
 use Symfony\Component\HttpClient\HttpClient;
 
-class AbstractManager
+abstract class AbstractManager
 {
     protected $client;
 
-    protected $url = "https://api.windy.com/api/webcams/v2/";
+    protected $url;
 
-    protected $key = "&key=" . API_KEY;
+    protected $key;
 
-    public function __construct()
+    public function __construct(string $url, string $key)
     {
         $this->client = HttpClient::create();
-    }
-
-    public function webcam($param)
-    {
-        $response = $this->client->request('GET', $this->url . $param . $this->key);
-        $data = $response->toArray();
-        $iframeSrc = $data['result']['webcams'][0]['player']['lifetime']['embed'];
-
-        return $iframeSrc;
+        $this->url = $url;
+        $this->key = $key;
     }
 }
