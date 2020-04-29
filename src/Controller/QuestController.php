@@ -20,11 +20,17 @@ class QuestController extends AbstractController
     public function start()
     {
         $this->connected($_SESSION);
-
+      
+        if (!empty($_SESSION['score']) || ($_SESSION['score'] == 0)) {
+            $score = "SCORE : " . $_SESSION['score'];
+        } else {
+            $score = '';
+        }
+      
         $questManager = new QuestManager();
         $quests = $questManager->selectAll();
 
-        return $this->twig->render('Quest/index.html.twig', ['quests' => $quests]);
+        return $this->twig->render('Quest/index.html.twig', ['quests' => $quests], ['userScore' => $score]);
     }
 
     public function test()
