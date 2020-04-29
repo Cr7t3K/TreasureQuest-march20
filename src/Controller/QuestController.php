@@ -3,7 +3,10 @@
 
 namespace App\Controller;
 
+
+use App\Model\QuestManager;
 use App\Service\API\AbstractManager;
+
 
 class QuestController extends AbstractController
 {
@@ -17,7 +20,11 @@ class QuestController extends AbstractController
     public function start()
     {
         $this->connected($_SESSION);
-        return $this->twig->render('Quest/index.html.twig');
+
+        $questManager = new QuestManager();
+        $quests = $questManager->selectAll();
+
+        return $this->twig->render('Quest/index.html.twig', ['quests' => $quests]);
     }
 
     public function test()
