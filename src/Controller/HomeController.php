@@ -25,9 +25,9 @@ class HomeController extends AbstractController
             $userName = $_POST['username'];
             $_SESSION['username'] = $userName;
             $_SESSION['score'] = 0;
-            header("Location: /quest/start" );
+            header("Location: /quest/start");
         } elseif (isset($_SESSION['username'])) {
-            header( "Location: /quest/start");
+            header("Location: /quest/start");
         }
         return $this->twig->render('Home/index.html.twig');
     }
