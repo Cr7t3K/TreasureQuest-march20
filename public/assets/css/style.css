@@ -26,3 +26,28 @@
     font-weight: 600;
     text-align: center;
 }
+
+/*affichage quetes*/
+h5 {
+    text-align: center;
+}
+
+.accordion {
+    margin: 20px;
+}
+
+/*formulaire recherche*/
+.form-search {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.btn-search{
+    font-size: 30px;
+}
+.search{
+    margin-bottom: 0;
+
+}
