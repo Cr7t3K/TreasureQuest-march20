@@ -9,8 +9,10 @@ class UserController extends AbstractController
     public function show()
     {
         $userManager = new UserManager();
-        $users = $userManager->selectAll();
+        $users = $userManager->selectHighScores();
 
+        var_dump($users);
+        die();
         return $this->twig->render('Home/highScores.html.twig', ['users' => $users]);
     }
 }

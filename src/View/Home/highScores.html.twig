@@ -1,20 +1,25 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <table class="table table-striped table-dark">
-        <thead>
-            <tr>
-                <th scope="row">Rank</th>
-                <th scope="col">Player</th>
-                <th scope="col">High Score</th>
-            </tr>
-        </thead>
-        <tr>
-            {% for user in users|slice(0, 10) %}
-            <th scope="row">{{ loop.index }}</th>
-            <td>{{ user.user_name }}</td>
-            <td>{{ user.user_score }}</td>
-            {% endfor %}
-        </tr>
-    </table>
+    {{ dump(users) }}
+    <div class="table-container">
+        <table class="table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Rank</th>
+                    <th scope="col">Player</th>
+                    <th scope="col">High Scores</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for user in users | slice(0, 10) %}
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>{{ user.user_name }}</td>
+                        <td>{{ user.user_score }}</td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

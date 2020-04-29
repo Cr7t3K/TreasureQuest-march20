@@ -10,4 +10,9 @@ class UserManager extends AbstractManager
     {
         parent::__construct(self::TABLE);
     }
+
+    public function selectHighScores(): array
+    {
+        return $this->pdo->query('SELECT * FROM ' . self::TABLE . 'ORDER BY user_score DESC')->fetchAll();
+    }
 }
