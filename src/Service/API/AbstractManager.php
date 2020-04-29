@@ -3,8 +3,6 @@
 
 namespace App\Service\API;
 
-
-
 use Symfony\Component\HttpClient\HttpClient;
 
 class AbstractManager
@@ -28,5 +26,4 @@ class AbstractManager
 
         return $iframeSrc;
     }
-
 }
