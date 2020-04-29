@@ -1,5 +1,9 @@
 {% extends 'layout.html.twig' %}
 
+{% block user_score %}
+    {{ userScore }}
+{% endblock %}
+
 {% block content %}
     <iframe src=" {{ array }}" frameborder="0"></iframe>
 {% endblock %}
