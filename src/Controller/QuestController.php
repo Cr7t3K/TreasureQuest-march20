@@ -26,6 +26,7 @@ class QuestController extends AbstractController
         $questId = $_SESSION['id'];
         $quests = $questManager->selectOneById($questId);
         $indice = $_SESSION['indice'];
+        $location = $questManager->clueLocation($questId);
 
 
         if (!empty($_POST['indice'])) {
@@ -61,11 +62,11 @@ class QuestController extends AbstractController
             if ($coord) {
                 $webcams = $this->search($coord);
                 return $this->twig->render('Quest/index.html.twig', ['quests' => $quests,
-                    'webcams' => $webcams, 'userScore' => $return, 'indice' => $indice]);
+                    'webcams' => $webcams, 'userScore' => $return, 'indice' => $indice, 'location' => $location]);
             } else {
                 $error = "Sa existe pas abruti";
                 return $this->twig->render('Quest/index.html.twig', ['quests' => $quests,
-                    'error' => $error, 'userScore' => $return, 'indice' => $indice]);
+                    'error' => $error, 'userScore' => $return, 'indice' => $indice, 'location' => $location]);
             }
         }
         return $this->twig->render('Quest/index.html.twig', ['quests' => $quests,
