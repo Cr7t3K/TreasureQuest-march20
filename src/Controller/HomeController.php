@@ -43,4 +43,9 @@ class HomeController extends AbstractController
 
         return $this->twig->render('Home/highScores.html.twig', ['users' => $users]);
     }
+
+    public function help()
+    {
+        return $this->twig->render('Home/help.html.twig');
+    }
 }

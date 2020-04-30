@@ -19,6 +19,8 @@ body {
 
 .header {
     background-color: #FFD868;
+    position: absolute;
+    width: 100%;
 }
 
 .logo-container {
@@ -46,11 +48,6 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 3;
-}
-
-.header {
-   position: absolute;
-   width: 100%;
 }
 
 .form-control {
@@ -201,3 +198,48 @@ h5 {
     color: #FFD868;
     font-size: 20px;
 }
+
+.modal-body {
+    font-family: 'Raleway', sans-serif;
+}
+
+.help {
+    padding: 200px 20px 20px; 20px;
+}
+.help h2 {
+    font-size: 36px;
+    color: #FFD868;
+}
+
+.help h3 {
+    font-size: 24px;
+    color: #FFD868;
+}
+.help li {
+    font-family: 'Raleway', sans-serif;
+    color: #FFD868;
+    list-style-type: none;
+}
+
+.footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.footer a {
+    color: #F8615A;
+    font-size: 20px;
+}
+
+.modal-button {
+    color: #F8615A;
+    font-size: 20px;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
