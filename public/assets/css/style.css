@@ -132,11 +132,11 @@ h5 {
 }
 
 .table-container {
-    padding-top: 150px;
+    padding-top: 200px;
 }
 
 .container-quest {
-    padding-top: 150px;
+    padding-top: 200px;
 }
 .form-search-quest {
     display: flex;
@@ -147,4 +147,7 @@ h5 {
 .container-webcam{
     display: flex;
     flex-wrap: wrap;
+}
+.myscore {
+    background: #f24335 !important;;
 }
