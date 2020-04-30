@@ -71,15 +71,17 @@ body {
 
 .cam-container {
     display:flex;
-    flex-direction: column;
+    /*flex-direction: column;*/
     margin: auto;
     width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .cam {
     padding: 20px;
     height: 300px;
-    width: 500px;
+    width: 100%;
 }
 
 /*affichage quetes*/
@@ -117,6 +119,7 @@ h5 {
 }
 .btn-search{
     font-size: 30px;
+    display: none;
 }
 
 .search{
@@ -142,10 +145,17 @@ h5 {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin-top: 50px;
 }
 .container-webcam{
     display: flex;
     flex-wrap: wrap;
+}
+
+.webcam {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
 }
 
 .myscore {
@@ -171,6 +181,7 @@ h5 {
     width: 100%;
     height: 100vh;
     padding-top: 200px;
+    margin-bottom: 100px;
 }
 
 .table-container h2 {
@@ -188,10 +199,15 @@ h5 {
 .thead {
     background-color: #F8615A;
 }
+.share {
+    margin: auto;
+    display: block;
+}
 
 .retour {
     text-align: center;
     padding: 10px;
+    margin: 50px;
 }
 
 .retour a {
@@ -225,6 +241,9 @@ h5 {
     width: 100%;
     display: flex;
     justify-content: center;
+    bottom: 0;
+    padding: 15px;
+    margin-top: 50px;
 }
 
 .footer a {
@@ -242,4 +261,22 @@ h5 {
     overflow: hidden;
     outline:none;
 }
+.container-indice{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
 
+.good-search {
+    display: flex;
+    /* justify-self: center; */
+    justify-content: center;
+    margin: 30px;
+    margin-top: 50px;
+    color: #f9d867;
+    font-size: 30px;
+}
+
+.button-check {
+    margin: 0 10px;
+}

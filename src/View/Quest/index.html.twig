@@ -70,19 +70,19 @@
                 </div>
             </div>
         {% endif %}
-        <form method="POST">
+        <form method="POST" class="container-indice">
             <button type="submit" name="indice" value="help">Un autre indice</button>
         </form>
     </div>
     <form class="form-search-quest" method="POST">
         <div class="form-group search">
-            <input type="text" class="form-control" id="search" name="search" placeholder="Recherche une ville">
+            <input type="text" class="form-control" id="search" name="search" placeholder="Entre une ville">
         </div>
         <button type="submit" class="btn btn-search"><i class="fas fa-play" style="color:#FFD868;"></i></button>
     </form>
     {% for webcam in webcams %}
         {% if webcam.id == location.quest_validation %}
-            <span>Tu es sur la bonne voie !</span>
+            <span class="good-search">Tu es sur la bonne voie !</span>
         {% endif %}
     {% endfor %}
     {% if check is defined %}
@@ -107,11 +107,10 @@
     <form class="container-webcam" method="POST">
     <div class="cam-container">
         {% for webcam in webcams %}
-            {{ webcam.id }}
             <div class="webcam">
                 <iframe class="cam" src="{{ webcam.player.lifetime.embed }}" frameborder="0"></iframe>
                 <input name="id" value="{{ quests.quest_id }}" type="hidden">
-                <button type="submit" name="response" value="{{ webcam.id }}">Check</button>
+                <button class="button-check" type="submit" name="response" value="{{ webcam.id }}">Voici ma reponse</button>
             </div>
         {% endfor %}
         </div>
