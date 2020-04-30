@@ -8,6 +8,8 @@
 
 namespace App\Controller;
 
+use App\Model\UserManager;
+
 class HomeController extends AbstractController
 {
 
@@ -25,6 +27,8 @@ class HomeController extends AbstractController
             $userName = $_POST['username'];
             $_SESSION['username'] = $userName;
             $_SESSION['score'] = 0;
+            $_SESSION['id'] = 5;
+            $_SESSION['indice'] = 1;
             header("Location: /quest/start");
         } elseif (isset($_SESSION['username'])) {
             header("Location: /quest/start");
@@ -32,8 +36,16 @@ class HomeController extends AbstractController
         return $this->twig->render('Home/index.html.twig');
     }
 
-    public function showHighScores()
+    public function show()
     {
-        return $this->twig->render('Home/highScores.html.twig');
+        $userManager = new UserManager();
+        $users = $userManager->selectHighScores();
+
+        return $this->twig->render('Home/highScores.html.twig', ['users' => $users]);
+    }
+
+    public function help()
+    {
+        return $this->twig->render('Home/help.html.twig');
     }
 }
