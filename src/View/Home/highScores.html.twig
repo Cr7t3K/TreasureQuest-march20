@@ -2,8 +2,9 @@
 
 {% block content %}
     <div class="table-container">
-        <table class="table table-striped table-dark">
-            <thead>
+        <h2> High Scores</h2>
+        <table class="table">
+            <thead class="thead">
             <tr>
                 <th scope="col">Rank</th>
                 <th scope="col">Player</th>
@@ -20,5 +21,9 @@
             {% endfor %}
             </tbody>
         </table>
+    </div>
+
+    <div class="retour">
+        <a href="/">Retour à l'accueil</a>
     </div>
 {% endblock %}
