@@ -8,6 +8,8 @@
 
 namespace App\Controller;
 
+use App\Model\UserManager;
+
 class HomeController extends AbstractController
 {
 
@@ -34,8 +36,11 @@ class HomeController extends AbstractController
         return $this->twig->render('Home/index.html.twig');
     }
 
-    public function showHighScores()
+    public function show()
     {
-        return $this->twig->render('Home/highScores.html.twig');
+        $userManager = new UserManager();
+        $users = $userManager->selectHighScores();
+
+        return $this->twig->render('Home/highScores.html.twig', ['users' => $users]);
     }
 }

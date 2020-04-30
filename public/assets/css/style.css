@@ -39,16 +39,18 @@ body {
 }
 
 .form-home {
-    height: 100vh;
+    height: 50vh;
+    padding-top: 150px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    z-index: 3;
 }
 
 .header {
    position: absolute;
-    width: 100%;
+   width: 100%;
 }
 
 .form-control {
@@ -131,10 +133,6 @@ h5 {
     text-align: center;
 }
 
-.table-container {
-    padding-top: 150px;
-}
-
 .container-quest {
     padding-top: 150px;
 }
@@ -147,4 +145,51 @@ h5 {
 .container-webcam{
     display: flex;
     flex-wrap: wrap;
+}
+
+.highScoresAccueil {
+    padding: 50px;
+    margin: 10px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.highScoresAccueil a {
+    color: #FFD868;
+    font-size: 24px;
+}
+
+
+.table-container {
+    width: 100%;
+    height: 100vh;
+    padding-top: 200px;
+}
+
+.table-container h2 {
+    text-align: center;
+    color: #FFD868;
+    font-size: 36px;
+    padding: 20px;
+}
+
+.table {
+    font-size: 24px;
+    color: #FFD868;
+}
+
+.thead {
+    background-color: #F8615A;
+}
+
+.retour {
+    text-align: center;
+    padding: 10px;
+}
+
+.retour a {
+    color: #FFD868;
+    font-size: 20px;
 }
