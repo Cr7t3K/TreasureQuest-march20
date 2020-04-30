@@ -1,9 +1,41 @@
-/*fonts
-font-family: 'Caveat Brush', cursive;
-font-family: 'Raleway', sans-serif;*/
+/*
+fonts
 
-.nav-item {
+font-family: 'Caveat Brush', cursive;
+font-family: 'Raleway', sans-serif;
+
+couleurs
+
+#721B65 - violet
+#B80D57 - rose foncé
+#F8615A - rose
+#FFD868 - jaune
+*/
+
+body {
     font-family: 'Caveat Brush', cursive;
+    background-color: #721B65;
+}
+
+.header {
+    background-color: #FFD868;
+}
+
+.logo-container {
+    display:flex;
+    flex-direction: column;
+    padding: 10px 20px;
+}
+
+.img-logo {
+    width: 100px;
+    height: auto;
+}
+
+.score {
+    list-style-type: none;
+    font-size: 30px;
+    padding: 10px 20px;
 }
 
 .form-home {
@@ -20,8 +52,11 @@ font-family: 'Raleway', sans-serif;*/
 }
 
 .form-control {
-    background-color: #FF8F56;
+    background-color: #B80D57;
+    border : #FFD868;
+    box-shadow: 0px 0px 45px 5px rgba(255,216,104,1);
 }
+
 .form-username {
     margin-bottom: 0;
 }
@@ -30,15 +65,36 @@ font-family: 'Raleway', sans-serif;*/
 }
 
 ::placeholder {
-    color: white !important;
-    font-weight: 600;
+    color: #FFD868 !important;
     text-align: center;
+    font-size: 24px;
+}
+
+.cam-container {
+    display:flex;
+    flex-direction: column;
+    margin: auto;
+    width: 100%;
+}
+
+.cam {
+    padding: 20px;
+    height: 300px;
+    width: 500px;
 }
 
 /*affichage quetes*/
 h5 {
     text-align: center;
     font-family: 'Caveat Brush', cursive;
+    font-size: 36px;
+    color: #FFD868;
+}
+
+.btn-link {
+    font-size: 24px;
+    text-decoration: none;
+    color: #F8615A;
 }
 
 .accordion {
@@ -52,15 +108,18 @@ h5 {
 
 /*formulaire recherche*/
 .form-search {
-    height: 100vh;
+    height: 50vh;
+    padding-top: 150px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    z-index: 3;
 }
 .btn-search{
     font-size: 30px;
 }
+
 .search{
     margin-bottom: 0;
 }

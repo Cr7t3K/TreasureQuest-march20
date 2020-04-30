@@ -9,7 +9,7 @@
         <div class="form-group search">
             <input type="text" class="form-control" id="search" name="search" placeholder="Rechercher ..">
         </div>
-        <button type="submit" class="btn btn-search"><i class="fas fa-play" style="color: forestgreen;"></i></button>
+        <button type="submit" class="btn btn-search"><i class="fas fa-play" style="color:#FFD868;"></i></button>
     </form>
     {% if error is defined %}
         <div class="alert alert-danger" role="alert">
@@ -17,9 +17,11 @@
         </div>
     {% endif %}
 
+    <div class="cam-container">
     {% for webcam in webcams %}
-        <iframe src="{{ webcam.player.lifetime.embed }}" frameborder="0"></iframe>
+        <iframe class="cam" src="{{ webcam.player.lifetime.embed }}" frameborder="0"></iframe>
     {% endfor %}
+    </div>
 
     {% for quest in quests %}
         <h5>{{ quest.quest_title }}</h5>
