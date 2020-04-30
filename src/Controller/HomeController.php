@@ -27,7 +27,7 @@ class HomeController extends AbstractController
             $userName = $_POST['username'];
             $_SESSION['username'] = $userName;
             $_SESSION['score'] = 0;
-            $_SESSION['id'] = 1;
+            $_SESSION['id'] = 3;
             $_SESSION['indice'] = 1;
             header("Location: /quest/start");
         } elseif (isset($_SESSION['username'])) {
