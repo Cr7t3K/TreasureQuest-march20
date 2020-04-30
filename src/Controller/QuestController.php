@@ -23,18 +23,36 @@ class QuestController extends AbstractController
     {
         $return = $this->connected($_SESSION);
         $questManager = new QuestManager();
-        $quests = $questManager->selectAll();
+        $questId = $_SESSION['id'];
+        $quests = $questManager->selectOneById($questId);
+        $indice = $_SESSION['indice'];
+
+
+        if (!empty($_POST['indice'])) {
+            $help = $_POST['indice'];
+            $nowIndice = $_SESSION['indice'];
+            if ($help == "help" && $nowIndice < 3) {
+                $newIndice = $_SESSION['indice'] += 1;
+                $newScore = $_SESSION['score'] -= 300;
+                return $this->twig->render('Quest/index.html.twig', ['quests' => $quests,
+                    'userScore' => $newScore, 'indice' => $newIndice]);
+            }
+        }
 
         if (!empty($_POST['response'])) {
             $response = trim($_POST['response']);
             $id = $_POST['id'];
             $check = $this->checkResponse($response, $id);
             $newScore = $return;
+            $newIndice = $_SESSION['indice'];
             if ($check) {
-                $newScore = $_SESSION['score'] += 100;
+                $newScore = $_SESSION['score'] += 1000;
+                $newQuestId = $_SESSION['id'] += 1;
+                $newIndice = $_SESSION['indice'] = 1;
+                $quests = $questManager->selectOneById($newQuestId);
             }
             return $this->twig->render('Quest/index.html.twig', ['quests' => $quests,
-                'userScore' => $newScore, 'check' => $check]);
+                'userScore' => $newScore, 'check' => $check, 'indice' => $newIndice]);
         }
 
         if (!empty($_POST['search'])) {
@@ -43,14 +61,15 @@ class QuestController extends AbstractController
             if ($coord) {
                 $webcams = $this->search($coord);
                 return $this->twig->render('Quest/index.html.twig', ['quests' => $quests,
-                    'webcams' => $webcams, 'userScore' => $return]);
+                    'webcams' => $webcams, 'userScore' => $return, 'indice' => $indice]);
             } else {
                 $error = "Sa existe pas abruti";
                 return $this->twig->render('Quest/index.html.twig', ['quests' => $quests,
-                    'error' => $error, 'userScore' => $return]);
+                    'error' => $error, 'userScore' => $return, 'indice' => $indice]);
             }
         }
-        return $this->twig->render('Quest/index.html.twig', ['quests' => $quests, 'userScore' => $return]);
+        return $this->twig->render('Quest/index.html.twig', ['quests' => $quests,
+            'userScore' => $return, 'indice' => $indice]);
     }
 
     public function search(array $coordinate)
