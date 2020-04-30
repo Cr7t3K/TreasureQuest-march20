@@ -1,6 +1,8 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+    {% set test = (allscore | last) %}
+
     <div class="table-container">
         <h2> High Scores</h2>
         <table class="table">
@@ -12,16 +14,20 @@
             </tr>
             </thead>
             <tbody>
-            {% for user in users | slice(0, 10) %}
-                <tr>
+            {% for user in users %}
+                {% if loop.index < 11 or user.user_name == test.user_name %}
+                <tr {% if user.user_name == test.user_name %}class="myscore"{% endif %}>
                     <th scope="row">{{ loop.index }}</th>
                     <td>{{ user.user_name }}</td>
                     <td>{{ user.user_score }}</td>
                 </tr>
+                {% endif %}
             {% endfor %}
             </tbody>
         </table>
     </div>
+    <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.facebook.com%2FTreasureQuest-101312374909292%2F&layout=button_count&size=large&appId=237301174174448&width=104&height=28" width="104" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+
 
     <div class="retour">
         <a href="/">Retour à l'accueil</a>
