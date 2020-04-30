@@ -57,7 +57,7 @@ class QuestController extends AbstractController
                 $newIndice = $_SESSION['indice'] = 1;
                 $quests = $questManager->selectOneById($newQuestId);
             }
-            if ($newQuestId == 6) {
+            if (!empty($newQuestId) && $newQuestId == 6) {
                 $userManager = new UserController();
                 $userManager->insertScore($_SESSION);
                 session_destroy();
