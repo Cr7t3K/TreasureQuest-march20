@@ -53,7 +53,6 @@ class Connection
             }
         } catch (\PDOException $e) {
             echo('<div class="error">Error !: ' . $e->getMessage() . '</div>');
-
         }
     }
 
