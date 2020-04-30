@@ -35,9 +35,39 @@
 </header>
 
 {% block content %}{% endblock %}
+
+{% block footer %}{% endblock %}
+<div class="footer">
+    <a href="/home/help">Aide - </a>
+    <a href="/user/show/highScores">Meilleurs scores - </a>
+    <!-- Button trigger modal -->
+    <button type="button" class="modal-button" data-toggle="modal" data-target="#exampleModal">
+        Mentions légales
+    </button>
+</div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Mentions "légales"</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Produit par le WCS Hackathon - édition "Confinement" d'avril 2020</p>
+                    <p>Codé avec passion par Cr7t3k, Raphonx, Fouha et Justucru</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% block javascript %}{% endblock %}
-
-
 <!-- Script Bootstrap -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
