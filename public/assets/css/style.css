@@ -216,7 +216,7 @@ h5 {
 .footer {
     width: 100%;
     display: flex;
-    margin: 5px auto;
+    justify-content: center;
 }
 
 .footer a {
