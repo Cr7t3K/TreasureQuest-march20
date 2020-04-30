@@ -11,6 +11,11 @@ class UserController extends AbstractController
         $userManager = new UserManager();
         $users = $userManager->selectHighScores();
         $allscore = $userManager->selectAll();
+        if (!empty($_SESSION['username'])) {
+            $session = $_SESSION;
+            return $this->twig->render('Home/highScores.html.twig', ['users' => $users, 'allscore' => $allscore,
+                'session' => $session]);
+        }
 
         return $this->twig->render('Home/highScores.html.twig', ['users' => $users, 'allscore' => $allscore]);
     }
